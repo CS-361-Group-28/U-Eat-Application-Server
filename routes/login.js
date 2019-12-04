@@ -19,8 +19,9 @@ router.post('/', function(req, res)
     if(email && password)
 	{
         db.query('SELECT * FROM account WHERE email = ? and password = ?', [email, password], function(err, results, fields)
-		{
-			if(results.length > 0)
+		{       
+	
+			if(results.length>0)
 			{
 				req.session.loggedin = true;
 				req.session.userid = results[0].id;

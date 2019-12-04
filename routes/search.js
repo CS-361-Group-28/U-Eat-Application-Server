@@ -44,7 +44,7 @@ router.get('/map', function(req, res, next)
     {
         // Ibrahim: req.query is new for me, I was taught req.params (which is the string following a colon in the url)
         db.query("SELECT id, name, street1, city, state, zip, lat, lng FROM restaurant WHERE zip = ?", [req.query.searchzip], function(err, results, fields)
-        {
+        {	console.log(results);
             if (results.length > 0)
             {
                 res.render('searchMapResults',
@@ -53,6 +53,7 @@ router.get('/map', function(req, res, next)
                         loggedin: req.session.loggedin,
                         username: req.session.username,
                         userid: req.session.userid,
+			GMapsAPIKEY: process.env.GOOGLEMAPSAPIKEY,
                         restaurant: results
                     }
 
