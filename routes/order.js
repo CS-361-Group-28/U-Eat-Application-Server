@@ -25,7 +25,7 @@ router.get('/:orderid', function(req, res, next)
                 console.log(results);
                 res.render('order',
                     {
-                        title: results[0].resname,
+                        reservationID: req.params.orderid,
                         order_Total:results[0].Order_Total,
                         loggedin: req.session.loggedin,
                         username: req.session.username,
